@@ -15,7 +15,8 @@
 
 void realizarDescuento(float numeroIngresado);
 
-int main(void) {
+int main(void)
+{
 	setbuf(stdout, NULL);
 	int numeroUno;
 
