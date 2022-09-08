@@ -30,6 +30,7 @@
 int ingresoDato(void);
 float promedioDatos(int primerNumero, int segundoNumero);
 int parametroEntero(int numero);
+void ingresoEnteros(void);
 
 int main(void)
 {
@@ -111,4 +112,68 @@ int parametroEntero(int numero)
 			return 0;
 		}
 	}
+}
+
+void ingresoEnteros(void)
+{
+	int ingresoNumero;
+	int retornoIndefinido;
+	int i;
+	int contadorPositivo;
+	int contadorCero;
+	int acumuladorNegativos;
+	int menorNegativo;
+	int promedioPositivos;
+	int acumuladorNegativosFiltrado;
+	int sumaMenorNegativo;
+
+
+	contadorPositivo = 0;
+	contadorCero = 0;
+	acumuladorNegativos = 0;
+
+	for(i = 0; i < 10; i++)
+	{
+		printf("\nIngrese un numero: ");
+		scanf("%d",&ingresoNumero);
+
+		retornoIndefinido = parametroEntero(ingresoNumero);
+		if(retornoIndefinido == 1)
+		{
+			contadorPositivo++;
+		}
+		else
+		{
+			if(retornoIndefinido == -1)
+			{
+				acumuladorNegativos += ingresoNumero;
+				if(ingresoNumero < menorNegativo || acumuladorNegativos != 0)
+				{
+					menorNegativo = ingresoNumero;
+				}
+			}
+			else
+			{
+				contadorCero++;
+			}
+		}
+
+	}
+	promedioPositivos = contadorPositivo / i;
+
+	printf("\nEl promedio de los positivos es: %d",promedioPositivos);
+	printf("\nLa cantidad de ceros es: %d",contadorCero);
+
+	acumuladorNegativosFiltrado = acumuladorNegativos - menorNegativo;
+	sumaMenorNegativo = menorNegativo + acumuladorNegativosFiltrado;
+	if(sumaMenorNegativo >= 0)
+	{
+		printf("\nLa suma de los negativos llego a 0");
+	}
+	else
+	{
+		printf("\nLa suma de los negativos a su menor negativos es: %d",sumaMenorNegativo);
+	}
+
+
 }
